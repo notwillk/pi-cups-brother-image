@@ -12,3 +12,8 @@ jobs:
         uses: Nature40/pimod@v0.6.0
         with:
           pifile: image.Pifile
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: pi-cups-brother-${{ github.sha }}.zip
+          path: pi-cups-brother.img
