@@ -17,4 +17,4 @@ RUN apt-get install -y cups printer-driver-brlaser
 
 # Configure CUPS
 INSTALL cupsd.conf /etc/cups/cupsd.conf
-RUN sudo usermod -a -G lpadmin
+RUN sudo usermod -a -G lpadmin pi
