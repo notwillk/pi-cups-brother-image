@@ -1,0 +1,19 @@
+name: Release
+on:
+  release:
+    types: [published]
+    branches:
+      - main
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: recursive
+      - name: Build with pimod
+        uses: Natur40/pimod@master
+        env:
+          PUBLIC_SSH_KEY: ${{ secrets.PUBLIC_SSH_KEY }}
+        with:
+          pifile: image.Pifile
