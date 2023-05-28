@@ -6,7 +6,6 @@ PUMP 500M
 
 # Install an ssh key if specified
 RUN mkdir -p /home/pi/.ssh
-#RUN [[ -z "@@PUBLIC_SSH_KEY@@" ]] && echo "@@PUBLIC_SSH_KEY@@" > /home/pi/.ssh/authorized_keys
 
 # Enable SSH
 RUN raspi-config nonint do_ssh 0
@@ -18,3 +17,7 @@ RUN apt-get install -y cups printer-driver-brlaser
 # Configure CUPS
 INSTALL cupsd.conf /etc/cups/cupsd.conf
 RUN sudo usermod -a -G lpadmin pi
+
+# Clean up
+RUN apt-get clean
+RUN apt-get autoremove
